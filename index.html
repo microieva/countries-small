@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="styles.css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <title>Countries</title>
 </head>
 <body>
@@ -13,16 +15,22 @@
             <div class="top-container">
                 <div class="titles">
                     <h1>WORLD COUNTRY LIST</h1>
-                    <p>Total Number of Countries: </p>
+                    <p id="p-total-count">Total Number of Countries: </p>
                 </div>
                 <div class="buttons">
-                    <button id="starts-with-button">STARTING WORLD</button>
-                    <button id="search-word-button">SEARCH WITH ANY WORD</button>
-                    <button id="reverse">reverse icon</button>
+                    <button class="button starts-with-button">STARTING WORD</button>
+                    <button class="button search-word-button">SEARCH WITH ANY WORD</button>
+                    <button class="reverse-icon fa-stack fa-1x">
+                        <i class="fa fa-square fa-stack-2x" style="color:blueviolet"></i>
+                        <i class="fas fa-exchange-alt fa-stack-1x" style="color:white"></i>
+                    </button>
+                    
                 </div>
                 <div class="search">
                     <input id="user-input" type="text"/>
-                    <button id="search-icon">search icon</button>
+                    <span class="search-icon fa-2x">
+                        <i class="fas fa-search" style="padding:0.5rem"></i>
+                    </span>
                 </div>
             </div>
             <div class="display-container">
