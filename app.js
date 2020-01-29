@@ -3,7 +3,11 @@
 const startsWithButton = document.querySelector('.starts-with-button');
 const searchAnyWord = document.querySelector('.search-word-button');
 const reverseButton = document.querySelector('.reverse-icon');
+const searchIcon = document.querySelector('.search-icon');
 document.querySelector('#p-total-count').innerHTML+=`${countries.length}`;
+
+const titles = document.querySelector('.titles');
+//const line = `<p>Countries containing <i style="color:red"> ${userInput.value} </i>  are <span style="color:lightgreen">${arr.length}</span></p>`
 
 
 const displayContainer = document.querySelector('.display-container');
@@ -18,17 +22,19 @@ const display = (arr) => {
         displayContainer.appendChild(div);
     }
     
+    userInput.value = null;
 }
 display(countries);
 
-const infoAppending = () => {
-    const titles = document.querySelector('.titles');
-    const line = `<p>Countries containing <i style="color:red"> ${userInput.value} </i>  are <span style="color:lightgreen">${arr.length}</span></p>`
-    titles.innerHTML += line;
-}
+// const infoAppending = (userInput) => {
+//     while (userInput.value != '') {
+        
+//         titles.innerHTML += line;
+//     } 
+// }
 
-const searchStart = (arr) => {  
-    return filteredArray = arr.filter((country => country.startsWith(userInput.value)));
+const searchStart = (arr) => { 
+    return arr.filter((country => country.startsWith(userInput.value)));
    
 }
 
@@ -37,22 +43,24 @@ const searchAny = (arr) => {
 }
 
 const reversing = (arr) => {
-    //const result =[...arr]
+    //const arrCopy =[...arr]
     return arr.reverse()
 }
 
 //USER ACTIONS
-startsWithButton.addEventListener('click', () => {   
-    display(searchStart(countries))
-    userInput.value = null;
+startsWithButton.addEventListener('click', () => {  
+    display(searchStart(countries))    
 });
 
 searchAnyWord.addEventListener('click', () => {
     display(searchAny(countries))
-    userInput.value = null;
 })
 
 reverseButton.addEventListener('click', () => {
+    reversing(display(countries))
+    //display(reversing(countries));
+})
 
-    reversing(display(arr))
+searchIcon.addEventListener('click', () => {
+    display(searchAny(countries));
 })
