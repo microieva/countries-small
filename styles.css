@@ -75,9 +75,9 @@ input {
     outline: none;
 }
 
-.reverse-icon {
+.fa-exchange-alt {
     transform: rotate(-90deg);
-    
+    text-align: center;
 }
 
 .fa-square {

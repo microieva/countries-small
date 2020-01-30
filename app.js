@@ -1,17 +1,20 @@
-//BUTTONS
-
-const startsWithButton = document.querySelector('.starts-with-button');
-const searchAnyWord = document.querySelector('.search-word-button');
-const reverseButton = document.querySelector('.reverse-icon');
-const searchIcon = document.querySelector('.search-icon');
-document.querySelector('#p-total-count').innerHTML+=`${countries.length}`;
-
 const titles = document.querySelector('.titles');
+document.querySelector('#p-total-count').innerHTML+=`${countries.length}`;
 //const line = `<p>Countries containing <i style="color:red"> ${userInput.value} </i>  are <span style="color:lightgreen">${arr.length}</span></p>`
 
+//BUTTONS
+const searchStartButton = document.querySelector('.starts-with-button');
+const searchAnyButton = document.querySelector('.search-word-button');
+const reverseButton = document.querySelector('.reverse-icon');
+const searchIcon = document.querySelector('.search-icon');
+
+const userInput = document.querySelector('#user-input');
 
 const displayContainer = document.querySelector('.display-container');
-const userInput = document.querySelector('#user-input');
+
+//must be let 
+let copy = [...countries];
+let filtered = copy;
 
 const display = (arr) => {    
     displayContainer.innerHTML ='';
@@ -24,7 +27,7 @@ const display = (arr) => {
     
     userInput.value = null;
 }
-display(countries);
+
 
 // const infoAppending = (userInput) => {
 //     while (userInput.value != '') {
@@ -34,33 +37,43 @@ display(countries);
 // }
 
 const searchStart = (arr) => { 
-    return arr.filter((country => country.startsWith(userInput.value)));
+    filtered = arr.filter((country => country.startsWith(userInput.value)));
+    return filtered;
    
 }
 
 const searchAny = (arr) => {
-    return arr.filter((country => country.includes(userInput.value)));
+    filtered =  arr.filter((country => country.includes(userInput.value)));
+    return filtered;
 }
 
-const reversing = (arr) => {
-    //const arrCopy =[...arr]
+const reversing = (arr) => {   
     return arr.reverse()
 }
 
-//USER ACTIONS
-startsWithButton.addEventListener('click', () => {  
-    display(searchStart(countries))    
+
+
+//USER ACTIONS 
+searchStartButton.addEventListener('click', () => {  
+    display(searchStart(copy))    
 });
 
-searchAnyWord.addEventListener('click', () => {
-    display(searchAny(countries))
+searchAnyButton.addEventListener('click', () => {
+    display(searchAny(copy))
 })
 
 reverseButton.addEventListener('click', () => {
-    reversing(display(countries))
-    //display(reversing(countries));
+    if (userInput.value = '') {
+        display(reversing(copy))
+    } else {
+        display(reversing(filtered))
+    }
+    
 })
 
 searchIcon.addEventListener('click', () => {
-    display(searchAny(countries));
+    display(searchAny(copy));
 })
+
+//STARTING
+display(copy);
