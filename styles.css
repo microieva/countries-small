@@ -82,6 +82,7 @@ input {
 
 .fa-exchange-alt {
     transform: rotate(-90deg);
+    font-size: 14px;
 } 
 
 .fa {
