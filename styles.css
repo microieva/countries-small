@@ -1,3 +1,6 @@
+/* ==================================== BROWSER SETTINGS ====================================== */
+
+
 * {
     margin:0;
     padding:0;
@@ -5,39 +8,44 @@
     font-family: 'Roboto';
     font-weight: bolder;
 }
+
+/* ======================================== TOP SECTION ============================================= */
+
+
 .container {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
     flex-direction: column;
     text-align: center;
 }
 
 .top-container {
+    box-shadow: 0 10px 10px darkgrey;
     background-position: center;
     background-size: cover;
     background-image: linear-gradient(rgba(48, 132, 180, 0.6), rgba(15, 25, 53, 0.7)), url('./assets/globe-2.jpg');
     background-size: cover;
-    display: felx;
-    flex-wrap: wrap;
     justify-content: center;
     min-width: 100%;
     padding: 4rem 0;
 }
-
+/* ---------------------------- titles -------------------------- */
 h1 {
     font-size: 3em;
     letter-spacing: 22px;
+    margin-bottom: 0.5rem;
 }
 
 p {
     font-size: 1em;
 }
+/* ---------------------------- buttons -------------------------- */
 
 .button-block {
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 
 .buttons-container {
@@ -48,6 +56,7 @@ p {
 }
 
 .button {
+    box-shadow: 0 20px 20px rgb(68, 66, 66);
     min-width: 12rem;
     height: 40px;
     border:none;
@@ -61,10 +70,9 @@ p {
     outline: none;
 }
 
-.search {
-    display: flex;
-    min-width: 15rem;
-    justify-content: center; 
+.reverse-icon {
+    box-shadow: 0 5px 5px rgb(68, 66, 66);
+    margin-left:-5px;
 }
 
 .fa-exchange-alt {
@@ -72,20 +80,20 @@ p {
     font-size: 14px;
 } 
 
-.fa {
+.fa {   
     color: blueviolet;
 }
 
-.fa:focus {
-    color: rgb(180, 120, 236);
-}
-
-.fa-stack {
+.fa-stack {  
     font-size: 23px !important;
 }
 
-.reverse-icon {
-    margin-left:-5px;
+/* ---------------------------- user input ----------------------------- */
+
+.search-container {
+    display: flex;
+    min-width: 15rem;
+    justify-content: center; 
 }
 
 input {
@@ -110,12 +118,14 @@ input {
     font-size: 1.5rem;
 }
 
+/* =========================================== DISPLAY SECTION ============================================ */
+
 .display-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
     margin-top: 3rem; 
-    padding: 0 1rem;  
+    padding: 0 1rem 0 3rem;  
 }
 
 .div-country {

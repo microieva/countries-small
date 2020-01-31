@@ -11,14 +11,26 @@ const userInput = document.querySelector('#user-input');
 
 const displayContainer = document.querySelector('.display-container');
 
-let startClicked = false;
-let includeClicked = false;
-
 //must be let 
 let copy = [...countries];
 let filtered = copy;
 
-const display = (arr) => {    
+// let startClicked = false;
+// let includeClicked = false;
+
+// if (userInput.value != '') {
+//     startClicked = true;
+//     includeClicked = true;
+// }
+
+let appending = false;
+
+if (userInput.value != '') {
+    appending;
+}
+
+
+const display = (arr) => {       
     displayContainer.innerHTML ='';
     for (const country of arr) {
         const div = document.createElement('div');
@@ -26,17 +38,21 @@ const display = (arr) => {
         div.textContent = country.toUpperCase();
         displayContainer.appendChild(div);
     }   
-    userInput.value = null;
+    userInput.value = '';
+    //includeClicked = false;
 }
 
 
 const infoAppending = (arr) => {
-    const line = `<p>Countries containing <i style="color:red"> ${userInput.value} </i>  are <span style="color:lightgreen">${arr.length}   </span></p>`;
-    titles.innerHTML += line;   
+    if (appending) {
+        const line = `<p>Countries containing <i style="color:red"> ${userInput.value} </i>  are <span style="color:lightgreen">${arr.length}   </span></p>`;
+        titles.innerHTML += line;      
+    } 
 }
 
 const searchStart = (arr) => { 
     filtered = arr.filter((country => country.startsWith(userInput.value)));
+    infoAppending(filtered);
     return filtered;  
 }
 
@@ -53,13 +69,12 @@ const reversing = (arr) => {
 
 //USER ACTIONS 
 searchStartButton.addEventListener('click', () => {  
-    display(searchStart(copy)) 
-    startClicked = true  
+    display(searchStart(copy)); 
 });
 
 searchAnyButton.addEventListener('click', () => {
     display(searchAny(copy))
-    includeClicked = true
+    //includeClicked = true
      
 })
 
@@ -75,12 +90,13 @@ searchIcon.addEventListener('click', () => {
     display(searchAny(copy));
 })
 
-userInput.addEventListener('input', event => {
-    if (startClicked || includeClicked) {
-        infoAppending(filtered)
-    }
-    includeClicked = false;   
- })
+// userInput.addEventListener('input', (e) => {
+//     e.preventDefault();
+//     if (startClicked || includeClicked) {
+//         infoAppending(filtered)
+//     }
+       
+//  })
 
 //STARTING
 display(copy);
